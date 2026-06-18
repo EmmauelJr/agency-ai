@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import assets from "../assets/assets"
 
-const ThemeToggleBtn = ({theme, setTheme}) => {
+const ThemeToggleBtn = ({theme, setTheme}: {theme: string, setTheme: (theme: string) => void}) => {
 
     useEffect(() => {
       const prefersDarkMode = window.matchMedia("(prefers-color-scheme: dark)").

@@ -2,14 +2,15 @@ import toast from "react-hot-toast";
 import assets from "../assets/assets"
 import Title from "./Title"
 import { motion } from "motion/react"
+import type { FormEvent } from "react"
 
 
 const ContactUs = () => {
 
-    const onSubmit = async (event) => {
+    const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        const formData = new FormData(event.target);
+        const formData = new FormData(event.currentTarget);
 
         formData.append("access_key", "f4a9140e-bac7-4a37-a526-e7e68f73d6d8");
 
@@ -23,12 +24,13 @@ const ContactUs = () => {
     
             if (data.success) {
                 toast.success("Thank you for your submission")
-                event.target.reset();
+                event.currentTarget.reset();
             } else {
                 toast.error(data.message)
             }
         } catch (error) {
-            toast.error(error.message)
+            const message = error instanceof Error ? error.message : String(error)
+            toast.error(message)
         }
     }
 

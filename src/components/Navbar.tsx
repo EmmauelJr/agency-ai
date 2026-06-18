@@ -1,9 +1,14 @@
-import { useState } from "react"
+import { useState, type Dispatch, type SetStateAction } from "react"
 import assets from "../assets/assets"
 import ThemeToggleBtn from "./ThemeToggleBtn"
 import { motion } from "motion/react"
 
-const Navbar = ({theme, setTheme}) => {
+type NavbarProps = {
+  theme: string
+  setTheme: Dispatch<SetStateAction<string>>
+}
+
+const Navbar = ({ theme, setTheme }: NavbarProps) => {
 
 
   const [sidebarOpen, setSidebarOpen] = useState(false)

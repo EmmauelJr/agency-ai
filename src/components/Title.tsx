@@ -1,6 +1,6 @@
 import { motion } from "motion/react"
 
-const Title = ({ title, desc}) => {
+const Title = ({ title, desc }: { title: string; desc: string }) => {
   return (
     <>
       <motion.h2 

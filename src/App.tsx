@@ -10,18 +10,17 @@ import {Toaster} from "react-hot-toast"
 import Footer from "./components/Footer"
 
 const App = () => {
-  const [theme, setTheme] = useState(localStorage.getItem("theme") ? localStorage.
-  getItem("theme") : "light")
+  const [theme, setTheme] = useState<string>(() => localStorage.getItem("theme") ?? "light")
 
-  const dotRef = useRef(null)
-  const outlineRef = useRef(null)
+  const dotRef = useRef<HTMLDivElement>(null)
+  const outlineRef = useRef<HTMLDivElement>(null)
 
   // Refs for custom cursor Position tracking
   const mouse = useRef({x: 0, y: 0})
   const position = useRef({x: 0, y: 0})
 
   useEffect(() => {
-    const handleMouseMove = (e)=>{
+    const handleMouseMove = (e: { clientX: number; clientY: number })=>{
       mouse.current.x = e.clientX
       mouse.current.y = e.clientY
     }

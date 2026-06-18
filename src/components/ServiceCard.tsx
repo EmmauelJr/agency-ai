@@ -1,15 +1,28 @@
-import { useRef, useState } from "react"
+import { useRef, useState, type MouseEvent } from "react"
 import { motion } from "motion/react"
 
-const ServiceCard = ({ service, index }) => {
+interface Service {
+  icon: string
+  title: string
+  description: string
+}
+
+interface ServiceCardProps {
+  service: Service
+  index: number
+}
+
+const ServiceCard = ({ service, index }: ServiceCardProps) => {
 
     const [position, setPosition] = useState({x: 0, y: 0})
     const [visible, setVisible] = useState(false);
 
-    const divRef = useRef(null)
+    const divRef = useRef<HTMLDivElement | null>(null)
 
-    const handleMouseMove = (e) => {
-        const bounds = divRef.current.getBoundingClientRect();
+    const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
+        const current = divRef.current
+        if (!current) return
+        const bounds = current.getBoundingClientRect();
         setPosition({x: e.clientX - bounds.left, y: e.clientY - bounds.top})
     }
 

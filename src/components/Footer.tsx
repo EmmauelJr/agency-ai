@@ -1,8 +1,11 @@
 import assets from "../assets/assets"
 import { motion } from "motion/react"
 
+type FooterProps = {
+  theme: string
+}
 
-const Footer = ({theme}) => {
+const Footer = ({ theme }: FooterProps) => {
   return (
     <motion.div 
     initial={{ opacity: 0, y: 50 }}
